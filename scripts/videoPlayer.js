@@ -1,3 +1,5 @@
+import { addZero } from './supportScripts.js';
+
 export const videoPlayerInit = () => {
 
   const videoPlayer = document.querySelector('.video-player');
@@ -33,8 +35,6 @@ export const videoPlayerInit = () => {
     videoPlayer.currentTime = 0;
   }
 
-  const addZero = n => n < 10 ? '0' + n : n;
-
   videoPlayer.addEventListener('click', togglePlay);
   videoButtonPlay.addEventListener('click', togglePlay);
   videoButtonStop.addEventListener('click', stopPlay);
@@ -58,7 +58,7 @@ export const videoPlayerInit = () => {
     const progressDuration = videoPlayer.duration;
     const progressValue = videoProgress.value;
 
-    videoPlayer.currentTime = (progressValue * progressDuration) / 100;
+    videoPlayer.currentTime = Math.floor((progressValue * progressDuration) / 100);
   });
 }
 
